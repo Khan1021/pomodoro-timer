@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 
 import './App.css'
-const timeRemaining = 1500;
+const pomodoro = 5; //1500s=25m
+const shortBreak = 2;  //300s=5m
+const longBreak = 4 //900s=15m
+
 
 function App() {
   //this is where state declarations go - inside the function
 
-  const [secondsLeft, setSecondsLeft] = useState(1500)
+  const [secondsLeft, setSecondsLeft] = useState(pomodoro)
   const [isRunning, setIsRunning] = useState(false)
 
   const [mode, setMode] = useState('pomodoro') //pomodoro,short break, long break
-  const shortBreak = 300  //300s=5m
-  const longBreak = 900 //900s=15m
-  const pomodoro = 1500 //1500s=25m
+
   const [workSessions, setWorkSessions] = useState(0) //how many work sessions starting from 0 
 
   useEffect(() => {
@@ -21,9 +22,28 @@ function App() {
     const intervalId = setInterval(() => {
       setSecondsLeft((prev) => {
         if (prev == 0) {
-          setIsRunning(false)
-          return 0
-        }
+
+          if (mode === 'pomodoro') {
+            const newSessionCount = workSessions + 1
+            setWorkSessions(newSessionCount)
+
+            if (newSessionCount % 4 == 0) {
+              setMode('longBreak')
+              return longBreak
+            }//END if
+            else {
+              setMode('shortBreak')
+              return shortBreak
+            }//END else
+          }//END pomodoro if
+
+          else {
+            //if program reaches here, means that the mode is on break
+            setMode('pomodoro')
+            return pomodoro
+          }//END else
+
+        }//END if (prev == 0)
         return prev - 1
       })
     }, 1000)
@@ -49,7 +69,7 @@ function App() {
         </button>
 
         {/*this is the reset button*/}
-        <button disabled={secondsLeft == timeRemaining} onClick={() => setSecondsLeft(1500)}>Reset</button>
+        <button disabled={secondsLeft == pomodoro} onClick={() => setSecondsLeft(pomodoro)}>Reset</button>
       </div>
     </>
   )
