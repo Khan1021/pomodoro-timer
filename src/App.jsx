@@ -9,6 +9,12 @@ function App() {
   const [secondsLeft, setSecondsLeft] = useState(1500)
   const [isRunning, setIsRunning] = useState(false)
 
+  const [mode, setMode] = useState('pomodoro') //pomodoro,short break, long break
+  const shortBreak = 300  //300s=5m
+  const longBreak = 900 //900s=15m
+  const pomodoro = 1500 //1500s=25m
+  const [workSessions, setWorkSessions] = useState(0) //how many work sessions starting from 0 
+
   useEffect(() => {
     //1. the effect itself - code to run
     if (!isRunning) return     //dont start a timer if the timer is paused
