@@ -36,7 +36,7 @@ function App() {
     <>
       <div className='container'>
         <h1>pomodoro timer</h1>
-        <h2>{secondsLeft}</h2>
+        <h2>{formattedMinutes}:{formattedSeconds}</h2>
         <button onClick={() => setIsRunning(!isRunning)}>
           {isRunning ? 'Pause' : 'Start'}
         </button>
