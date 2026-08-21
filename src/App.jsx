@@ -25,6 +25,12 @@ function App() {
     return () => clearInterval(intervalId)  //the cleanup function
   }, [isRunning]);
 
+  const minutes = Math.floor(secondsLeft / 60)
+  const seconds = secondsLeft % 60
+
+  const formattedMinutes = minutes.toString().padStart(2, '0')
+  const formattedSeconds = seconds.toString().padStart(2, '0')
+
   return (
     //this is where the JSX goes
     <>
