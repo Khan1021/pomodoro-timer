@@ -30,19 +30,20 @@ function App() {
 
   const formattedMinutes = minutes.toString().padStart(2, '0')
   const formattedSeconds = seconds.toString().padStart(2, '0')
+  const formattedTime = `${formattedMinutes}:${formattedSeconds}`
 
   return (
     //this is where the JSX goes
     <>
       <div className='container'>
         <h1>pomodoro timer</h1>
-        <h2>{formattedMinutes}:{formattedSeconds}</h2>
+        <h2>{formattedTime}</h2>
         <button onClick={() => setIsRunning(!isRunning)}>
           {isRunning ? 'Pause' : 'Start'}
         </button>
 
         {/*this is the reset button*/}
-        <button onClick={() => setSecondsLeft(1500)}>Reset</button>
+        <button disabled={secondsLeft == timeRemaining} onClick={() => setSecondsLeft(1500)}>Reset</button>
       </div>
     </>
   )
