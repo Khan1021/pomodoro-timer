@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import './App.css'
 const pomodoro = 5; //1500s=25m
 const shortBreak = 2;  //300s=5m
 const longBreak = 4 //900s=15m
+
 
 
 function App() {
@@ -16,11 +17,21 @@ function App() {
 
   const [workSessions, setWorkSessions] = useState(0) //how many work sessions starting from 0 
 
+  const isFirstRender = useRef(true)
+
+
   const modeLabels = {
     pomodoro: 'Work',
     shortBreak: 'Short Break',
     longBreak: 'Long Break'
   }
+
+  const modeSounds = {
+    pomodoro: 'public/work chime.mp3',
+    shortBreak: 'public/short break.mp3',
+    longBreak: 'public/long break.mp3'
+  }
+
 
   useEffect(() => {
     //1. the effect itself - code to run
@@ -63,6 +74,19 @@ function App() {
   const formattedMinutes = minutes.toString().padStart(2, '0')
   const formattedSeconds = seconds.toString().padStart(2, '0')
   const formattedTime = `${formattedMinutes}:${formattedSeconds}`
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return  //this is to skip the sound on the first render
+    }//END if
+
+    const sound = new Audio(modeSounds[mode])
+    sound.play()
+  }, [mode])
+
+
+
 
   return (
     //this is where the JSX goes
