@@ -16,6 +16,12 @@ function App() {
 
   const [workSessions, setWorkSessions] = useState(0) //how many work sessions starting from 0 
 
+  const modeLabels = {
+    pomodoro: 'work',
+    shortBreak: 'Short Break',
+    longBreak: 'Long Break'
+  }
+
   useEffect(() => {
     //1. the effect itself - code to run
     if (!isRunning) return     //dont start a timer if the timer is paused
@@ -49,7 +55,7 @@ function App() {
     }, 1000)
 
     return () => clearInterval(intervalId)  //the cleanup function
-  }, [isRunning]);
+  }, [isRunning, mode, workSessions]);
 
   const minutes = Math.floor(secondsLeft / 60)
   const seconds = secondsLeft % 60
@@ -70,6 +76,11 @@ function App() {
 
         {/*this is the reset button*/}
         <button disabled={secondsLeft == pomodoro} onClick={() => setSecondsLeft(pomodoro)}>Reset</button>
+        <br></br>
+        <br></br>
+        <br></br>
+        {/*this is a title to show the current work session*/}
+        <h2>{modeLabels[mode]}</h2>
       </div>
     </>
   )
