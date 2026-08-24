@@ -17,7 +17,7 @@ function App() {
   const [workSessions, setWorkSessions] = useState(0) //how many work sessions starting from 0 
 
   const modeLabels = {
-    pomodoro: 'work',
+    pomodoro: 'Work',
     shortBreak: 'Short Break',
     longBreak: 'Long Break'
   }
@@ -76,9 +76,9 @@ function App() {
 
         {/*this is the reset button*/}
         <button disabled={secondsLeft == pomodoro} onClick={() => setSecondsLeft(pomodoro)}>Reset</button>
-        <br></br>
-        <br></br>
-        <br></br>
+      </div>
+
+      <div className='session name'>
         {/*this is a title to show the current work session*/}
         <h2>{modeLabels[mode]}</h2>
       </div>
