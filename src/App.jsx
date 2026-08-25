@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import Timer from '/components/Timer'
 import './App.css'
-import Controls from '/components/Controls'
+import Timer from './components/Timer'
+import Controls from './components/Controls'
 
 const pomodoro = 5; //1500s=25m
 const shortBreak = 2;  //300s=5m
@@ -93,16 +93,18 @@ function App() {
   return (
     //this is where the JSX goes
     <>
-      <div className='container'>
-        <h1>pomodoro timer</h1>
-        <Timer formattedTime={formattedTime} />
-        <button onClick={() => setIsRunning(!isRunning)}>
-          {isRunning ? 'Pause' : 'Start'}
-        </button>
 
-        {/*this is the reset button*/}
-        <button disabled={secondsLeft == pomodoro} onClick={() => setSecondsLeft(pomodoro)}>Reset</button>
-      </div>
+      <Controls
+        isRunning={isRunning}
+        onToggleRunning={() => setIsRunning(!isRunning)}
+        isResetDisabled={secondsLeft === pomodoro}
+        onReset={() => setSecondsLeft(pomodoro)}
+      />
+
+      <Timer
+        formattedTime={formattedTime}
+      />
+
 
       <div className='session name'>
         {/*this is a title to show the current work session*/}
