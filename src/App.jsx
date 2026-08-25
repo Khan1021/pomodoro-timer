@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-
+import Timer from '/components/Timer'
 import './App.css'
+import Controls from '/components/Controls'
+
 const pomodoro = 5; //1500s=25m
 const shortBreak = 2;  //300s=5m
 const longBreak = 4 //900s=15m
@@ -93,7 +95,7 @@ function App() {
     <>
       <div className='container'>
         <h1>pomodoro timer</h1>
-        <h2>{formattedTime}</h2>
+        <Timer formattedTime={formattedTime} />
         <button onClick={() => setIsRunning(!isRunning)}>
           {isRunning ? 'Pause' : 'Start'}
         </button>
