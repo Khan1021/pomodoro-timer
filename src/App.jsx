@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './App.css'
 import Timer from './components/Timer'
 import Controls from './components/Controls'
+import SessionInfo from './components/sessionInfo'
 
 const pomodoro = 5; //1500s=25m
 const shortBreak = 2;  //300s=5m
@@ -69,19 +70,7 @@ function App() {
     }, 1000)
 
 
-    let positionInCycle = 0
-    if (workSessions === 0) {
-      positionInCycle = 0
-    }//END if
-    else if (workSessions % 4 === 0) {
-      positionInCycle = 4
-    }//END else if
-    else {
-      positionInCycle = workSessions % 4
-    }//END else
 
-
-    const sessionText = 'Session ${positionInCycle} of 4'
 
     return () => clearInterval(intervalId)  //the cleanup function
   }, [isRunning, mode, workSessions]);
@@ -108,6 +97,23 @@ function App() {
   }, [mode])
 
 
+  //this is text to show the work cycle and the name of the current session in the cycle
+  let positionInCycle = 0
+  if (workSessions === 0) {
+    positionInCycle = 0
+  }//END if
+  else if (workSessions % 4 === 0) {
+    positionInCycle = 4
+  }//END else if
+  else {
+    positionInCycle = workSessions % 4
+  }//END else
+
+
+  //on screen metrics for session info
+  const sessionText = `Session ${positionInCycle} of 4`
+  const completedWorkSessions = Math.floor(workSessions / 4)
+  const totalWorkSessions = `Total pomodoro sessions compelete : ${completedWorkSessions}`
 
 
   return (
@@ -125,11 +131,12 @@ function App() {
         formattedTime={formattedTime}
       />
 
+      <SessionInfo
+        modeLabels={modeLabels[mode]}
+        positionInCycle={sessionText}
+        totalWorkSessions={totalWorkSessions}
+      />
 
-      <div className='session name'>
-        {/*this is a title to show the current work session*/}
-        <h2>{modeLabels[mode]}</h2>
-      </div>
     </>
   )
 }   //component function ends here

@@ -3,8 +3,9 @@
 function SessionInfo(props) {
     return (
         <>
-            <h2>{props.positionInCycle}</h2>
-            <h2>{props.sessionText}</h2>
+            <h3>{props.modeLabels}</h3>
+            <h3>{props.positionInCycle}</h3>
+            <h2>{props.totalWorkSessions}</h2>
         </>
     )
 }
