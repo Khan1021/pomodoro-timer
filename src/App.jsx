@@ -22,6 +22,7 @@ function App() {
   const isFirstRender = useRef(true)
 
 
+
   const modeLabels = {
     pomodoro: 'Work',
     shortBreak: 'Short Break',
@@ -67,12 +68,31 @@ function App() {
       })
     }, 1000)
 
+
+    let positionInCycle = 0
+    if (workSessions === 0) {
+      positionInCycle = 0
+    }//END if
+    else if (workSessions % 4 === 0) {
+      positionInCycle = 4
+    }//END else if
+    else {
+      positionInCycle = workSessions % 4
+    }//END else
+
+
+    const sessionText = 'Session ${positionInCycle} of 4'
+
     return () => clearInterval(intervalId)  //the cleanup function
   }, [isRunning, mode, workSessions]);
 
+
+  //calculating the onscreen time 
   const minutes = Math.floor(secondsLeft / 60)
   const seconds = secondsLeft % 60
 
+
+  //calculating the onscreen time string
   const formattedMinutes = minutes.toString().padStart(2, '0')
   const formattedSeconds = seconds.toString().padStart(2, '0')
   const formattedTime = `${formattedMinutes}:${formattedSeconds}`
