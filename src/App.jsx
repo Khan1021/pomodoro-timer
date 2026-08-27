@@ -120,7 +120,7 @@ function App() {
 
   return (
     //this is where the JSX goes
-    <>
+    <div className='container'>
 
       <Controls
         isRunning={isRunning}
@@ -139,7 +139,7 @@ function App() {
         totalWorkSessions={totalWorkSessions}
       />
 
-    </>
+    </div>
   )
 }   //component function ends here
 
