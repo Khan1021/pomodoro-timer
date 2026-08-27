@@ -31,9 +31,9 @@ function App() {
   }
 
   const modeSounds = {
-    pomodoro: new Audio('/work chime.mp3'),
-    shortBreak: new Audio('/short break.mp3'),
-    longBreak: new Audio('/long break.mp3')
+    pomodoro: '/work chime.mp3',
+    shortBreak: '/short break.mp3',
+    longBreak: '/long break.mp3'
   }
 
 
