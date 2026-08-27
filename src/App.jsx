@@ -31,9 +31,9 @@ function App() {
   }
 
   const modeSounds = {
-    pomodoro: '/work chime.mp3',
-    shortBreak: '/short break.mp3',
-    longBreak: '/long break.mp3'
+    pomodoro: new Audio('/work chime.mp3'),
+    shortBreak: new Audio('/short break.mp3'),
+    longBreak: new Audio('/long break.mp3')
   }
 
 
@@ -93,7 +93,9 @@ function App() {
     }//END if
 
     const sound = new Audio(modeSounds[mode])
-    sound.play()
+    sound.play().catch((error) => {
+      console.log('Sounf playback failed:', error)
+    })
   }, [mode])
 
 
