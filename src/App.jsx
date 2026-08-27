@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './App.css'
 import Timer from './components/Timer'
 import Controls from './components/Controls'
-import SessionInfo from './components/sessionInfo'
+import SessionInfo from './components/SessionInfo'
 
 const pomodoro = 5; //1500s=25m
 const shortBreak = 2;  //300s=5m
