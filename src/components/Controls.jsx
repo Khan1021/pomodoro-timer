@@ -1,9 +1,11 @@
+import PearlButton from './PearlButton'
+
 function Controls(props) {
     return (
         <>
-            <button onClick={props.onToggleRunning}>{props.isRunning ? 'Pause' : 'Start'}</button>
+            <PearlButton label={props.isRunning ? 'Pause' : 'Start'} onClick={props.onToggleRunning} />
 
-            <button disabled={props.isResetDisabled} onClick={props.onReset}>Reset</button>
+            <PearlButton label="Reset" disabled={props.isResetDisabled} onClick={props.onReset} />
         </>
     )
 }
