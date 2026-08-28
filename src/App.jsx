@@ -13,6 +13,7 @@ const longBreak = 4 //900s=15m
 function App() {
   //this is where state declarations go - inside the function
 
+  const [theme, setTheme] = useState('light')
   const [secondsLeft, setSecondsLeft] = useState(pomodoro)
   const [isRunning, setIsRunning] = useState(false)
 
@@ -120,7 +121,7 @@ function App() {
 
   return (
     //this is where the JSX goes
-    <div className='container'>
+    <div className='container' data-theme={theme}>
 
       <Controls
         isRunning={isRunning}
