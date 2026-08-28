@@ -35,7 +35,6 @@
     --text: #9ca3af;
     --text-h: #f3f4f6;
     --bg: #16171d;
-    --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;
     --accent-bg: rgba(192, 132, 252, 0.15);
@@ -59,6 +58,21 @@
   }
 }
 
+
+:root[data-theme="dark"] {
+  --angle: 45deg;
+  --gradient:
+    oklab(12% -0.006 -0.012),
+    oklab(26% -0.010 -0.024),
+    oklab(46% -0.014 -0.028),
+    oklab(68% -0.016 -0.022),
+    oklab(87% -0.011 -0.016);
+  background: linear-gradient(var(--angle), var(--gradient));
+  color: #f3f4f6;
+  --text-h: oklab(68% -0.016 -0.022);
+}
+
+
 body {
   margin: 0;
 }
@@ -68,7 +82,6 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;

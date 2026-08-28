@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './App.css'
 import Timer from './components/Timer'
 import Controls from './components/Controls'
-import SessionInfo from './components/sessionInfo'
+import SessionInfo from './components/SessionInfo'
 
 
 const pomodoro = 5; //1500s=25m
@@ -38,7 +38,13 @@ function App() {
     longBreak: '/long break.mp3'
   }
 
+  //allows for darkmode for whole website
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
 
+
+  //timer logic 
   useEffect(() => {
     //1. the effect itself - code to run
     if (!isRunning) return     //dont start a timer if the timer is paused
@@ -141,6 +147,7 @@ function App() {
         modeLabels={modeLabels[mode]}
         positionInCycle={sessionText}
         totalWorkSessions={totalWorkSessions}
+        theme={theme}
       />
 
     </div>

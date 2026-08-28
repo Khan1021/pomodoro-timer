@@ -2,9 +2,16 @@
 
 function SessionInfo(props) {
     const sessionColours = {
-        'Work': '#E2B4BD',
-        'Short Break': '#F7D6D0',
-        'Long Break': '#FFF5F5'
+        light: {
+            'Work': '#E2B4BD',
+            'Short Break': '#F7D6D0',
+            'Long Break': '#FFF5F5'
+        },
+        dark: {
+            'Work': 'oklab(96% 0.180 37.585)',
+            'Short Break': 'oklab(51.373% 0.234 98.371)',
+            'Long Break': 'oklab(79.255% 0.149 154.725)'
+        }
     }
 
     return (
