@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import './App.css'
 import Timer from './components/Timer'
 import Controls from './components/Controls'
-import SessionInfo from './components/SessionInfo'
+import SessionInfo from './components/sessionInfo'
+
 
 const pomodoro = 5; //1500s=25m
 const shortBreak = 2;  //300s=5m
@@ -128,6 +129,8 @@ function App() {
         onToggleRunning={() => setIsRunning(!isRunning)}
         isResetDisabled={secondsLeft === pomodoro}
         onReset={() => setSecondsLeft(pomodoro)}
+        theme={theme}
+        onToggleTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       />
 
       <Timer
