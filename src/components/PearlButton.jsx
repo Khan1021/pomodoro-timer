@@ -1,10 +1,11 @@
-function PearlButton({ label = "Pearl Button", className = "", ...props }) {
+function PearlButton({ label = "Pearl Button", className = "", theme = "light", ...props }) {
+  const buttonBg = theme === "dark" ? "#080808" : "#513d32";
   return (
     <>
       <style>{`
         .pearl-button {
           --white: #fff3e6;   /*light mode highlight*/
-          --bg: #513d32;  /*dark bronze base*/
+          --bg: ${buttonBg};  /*dark bronze base when in light mode and near black base in dark mode*/
           --radius: 100px;
           outline: none;
           cursor: pointer;
