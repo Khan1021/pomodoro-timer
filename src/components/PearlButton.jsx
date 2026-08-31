@@ -3,8 +3,8 @@ function PearlButton({ label = "Pearl Button", className = "", ...props }) {
     <>
       <style>{`
         .pearl-button {
-          --white: #ffe7ff;
-          --bg: #080808;
+          --white: #fff3e6;   /*light mode highlight*/
+          --bg: #513d32;  /*dark bronze base*/
           --radius: 100px;
           outline: none;
           cursor: pointer;
