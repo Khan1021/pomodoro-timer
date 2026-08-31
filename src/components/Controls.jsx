@@ -3,9 +3,11 @@ import PearlButton from './PearlButton'
 function Controls(props) {
     return (
         <>
-            <PearlButton label={props.isRunning ? 'Pause' : 'Start'} onClick={props.onToggleRunning} theme={props.theme} />
+            <div className="playback-controls">
+                <PearlButton label={props.isRunning ? 'Pause' : 'Start'} onClick={props.onToggleRunning} theme={props.theme} />
 
-            <PearlButton label="Reset" disabled={props.isResetDisabled} onClick={props.onReset} theme={props.theme} />
+                <PearlButton label="Reset" disabled={props.isResetDisabled} onClick={props.onReset} theme={props.theme} />
+            </div>
 
             {/*dark mode toggle button*/}
             <PearlButton
