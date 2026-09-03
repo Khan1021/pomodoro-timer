@@ -16,24 +16,22 @@
 
 
 
-@keyframes fadeInLabel {
-  from {
-    opacity: 0;
-    transform: translateY(40px)
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 
 #modeLabels h3 {
   font-weight: bold;
   font-size: 60px;
-  animation: fadeInLabel 0.5s ease;
-  transition: color 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.3s ease, transform 0.3s, color 0.3s ease;
 }
+
+#modeLabels h3.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .playback-controls {
   display: flex;
