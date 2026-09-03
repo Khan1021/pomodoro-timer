@@ -130,15 +130,6 @@ function App() {
     //this is where the JSX goes
     <div className='container' data-theme={theme}>
 
-      <Controls
-        isRunning={isRunning}
-        onToggleRunning={() => setIsRunning(!isRunning)}
-        isResetDisabled={secondsLeft === pomodoro}
-        onReset={() => setSecondsLeft(pomodoro)}
-        theme={theme}
-        onToggleTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      />
-
       <Timer
         formattedTime={formattedTime}
       />
@@ -148,6 +139,15 @@ function App() {
         positionInCycle={sessionText}
         totalWorkSessions={totalWorkSessions}
         theme={theme}
+      />
+
+      <Controls
+        isRunning={isRunning}
+        onToggleRunning={() => setIsRunning(!isRunning)}
+        isResetDisabled={secondsLeft === pomodoro}
+        onReset={() => setSecondsLeft(pomodoro)}
+        theme={theme}
+        onToggleTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       />
 
     </div>
