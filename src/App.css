@@ -1,6 +1,13 @@
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -28,7 +35,7 @@
   transition: color 0.3s ease;
 }
 
-.playbacl-controls {
+.playback-controls {
   display: flex;
   flex-direction: row;
   gap: 20px;

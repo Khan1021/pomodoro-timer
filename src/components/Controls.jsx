@@ -10,11 +10,13 @@ function Controls(props) {
             </div>
 
             {/*dark mode toggle button*/}
-            <PearlButton
-                label={props.theme === 'light' ? 'Dark Mode' : 'Light Mode'}
-                onClick={props.onToggleTheme}
-                theme={props.theme}>
-            </PearlButton>
+            <div className="theme-toggle">
+                <PearlButton
+                    label={props.theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+                    onClick={props.onToggleTheme}
+                    theme={props.theme}>
+                </PearlButton>
+            </div>
         </>
     )
 }
