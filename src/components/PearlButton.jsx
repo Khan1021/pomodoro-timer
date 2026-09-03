@@ -1,11 +1,13 @@
-function PearlButton({ label = "Pearl Button", className = "", theme = "light", ...props }) {
+function PearlButton({ label = "Pearl Button", className = "", theme = "light", variant = "primary", ...props }) {
   const buttonBg = theme === "dark" ? "#080808" : "#513d32";
+  const isSecondary = variant === "secondary";
+  const outlineColor = theme === "dark" ? "#9ca3af" : "#513d32";
   return (
     <>
       <style>{`
         .pearl-button {
           --white: #fff3e6;   /*light mode highlight*/
-          --bg: ${buttonBg};  /*dark bronze base when in light mode and near black base in dark mode*/
+          
           --radius: 100px;
           outline: none;
           cursor: pointer;
@@ -106,9 +108,15 @@ function PearlButton({ label = "Pearl Button", className = "", theme = "light", 
         }
       `}</style>
 
-      <button className={`pearl-button ${className}`} {...props}>
+      <button className={`pearl-button ${className}`}
+        style={{
+          '--bg': isSecondary ? 'transparent' : buttonBg,
+          border: isSecondary ? `2px solid ${outlineColor}` : '0',
+        }}
+        {...props}
+      >
         <div className="wrap">
-          <p>
+          <p style={{ color: isSecondary ? outlineColor : 'rgba(255, 255, 255, 0.7)' }}>
             <span>✧</span>
             <span>✦</span>
             {label}

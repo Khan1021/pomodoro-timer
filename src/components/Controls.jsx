@@ -6,7 +6,7 @@ function Controls(props) {
             <div className="playback-controls">
                 <PearlButton label={props.isRunning ? 'Pause' : 'Start'} onClick={props.onToggleRunning} theme={props.theme} />
 
-                <PearlButton label="Reset" disabled={props.isResetDisabled} onClick={props.onReset} theme={props.theme} />
+                <PearlButton label="Reset" disabled={props.isResetDisabled} onClick={props.onReset} theme={props.theme} variant="secondary" />
             </div>
 
             {/*dark mode toggle button*/}
